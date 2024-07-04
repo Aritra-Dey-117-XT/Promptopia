@@ -55,7 +55,6 @@ function EditPrompt() {
     }
 
     return (
-        <Suspense>
             <Form
                 type="Edit"
                 post={post}
@@ -63,8 +62,15 @@ function EditPrompt() {
                 submitting={submitting}
                 handleSubmit={editPrompt}
             />
-        </Suspense>
     )
 }
 
-export default EditPrompt
+function EditPageSuspenseWrapper() {
+    return (
+      <Suspense fallback={<div>Loading...</div>}>
+        <EditPrompt />
+      </Suspense>
+    );
+  }
+  
+  export default EditPageSuspenseWrapper;

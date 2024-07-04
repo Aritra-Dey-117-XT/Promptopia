@@ -38,7 +38,6 @@ function Home() {
   }, [])
 
   return (
-    <Suspense>
       <section className="w-full flex-center flex-col">
           <h1 className="head_text text-center">Discover and Share
               <br className="max-md:hidden"/>
@@ -92,8 +91,15 @@ function Home() {
           )}
 
       </section>
-    </Suspense>
   )
 }
 
-export default Home
+function HomePageSuspenseWrapper() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <Home />
+    </Suspense>
+  );
+}
+
+export default HomePageSuspenseWrapper;
