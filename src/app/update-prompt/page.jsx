@@ -4,6 +4,8 @@ import Form from "@/components/Form";
 import { useState, useEffect } from "react"
 import { useRouter, useSearchParams } from "next/navigation";
 import axios from "axios"
+import { Suspense } from 'react'
+
 
 function EditPrompt() {
 
@@ -53,13 +55,15 @@ function EditPrompt() {
     }
 
     return (
-        <Form
-            type="Edit"
-            post={post}
-            setPost={setPost}
-            submitting={submitting}
-            handleSubmit={editPrompt}
-        />
+        <Suspense>
+            <Form
+                type="Edit"
+                post={post}
+                setPost={setPost}
+                submitting={submitting}
+                handleSubmit={editPrompt}
+            />
+        </Suspense>
     )
 }
 
