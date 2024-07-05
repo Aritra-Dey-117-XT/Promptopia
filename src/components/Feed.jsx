@@ -31,8 +31,9 @@ function Feed({tag}) {
 
     useEffect(() => {
         const fetchPosts = async () => {
-            const response = await axios.get("/api/prompt")
+            const response = await axios.get("/api/prompt", { headers: { 'Cache-Control': 'no-cache' } })
             const allPosts = response.data.allPrompts
+            console.log(allPosts)
             setPosts(allPosts)
         }
         fetchPosts()
