@@ -65,7 +65,7 @@ function Home() {
                         onClick={() => {
                           signIn(provider.id)
                         }}
-                        className='orange_gradient_btn'
+                        className='orange_gradient_btn mb-10'
                     >
                         Join Now &gt;
                     </button>
@@ -74,7 +74,7 @@ function Home() {
             </>
           )}
 
-          {isVisible && (
+          {session?.user.id && isVisible && (
             <div className="fixed bottom-4 right-4 cursor-pointer z-50">
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 

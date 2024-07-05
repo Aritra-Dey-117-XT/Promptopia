@@ -13,6 +13,8 @@ const handler = NextAuth({
     callbacks: {
         async session({session}) {
 
+            await connectToDB()
+
             const sessionUser = await User.findOne({
                 email: session.user.email
             })
@@ -45,7 +47,8 @@ const handler = NextAuth({
             }
     
         },
-    }
+    },
+    secret: process.env.NEXTAUTH_SECRET,
 })
 
 export {handler as GET, handler as POST}
