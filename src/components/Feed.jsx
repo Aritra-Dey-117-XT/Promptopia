@@ -33,7 +33,7 @@ function Feed({tag}) {
         const fetchPosts = async () => {
             const response = await axios.get("/api/prompt", { headers: { 'Cache-Control': 'no-cache' } })
             const allPosts = response.data.allPrompts
-            console.log(allPosts)
+            console.log("allPosts: ", allPosts)
             setPosts(allPosts)
         }
         fetchPosts()
