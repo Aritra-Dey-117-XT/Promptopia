@@ -34,10 +34,12 @@ function Feed({tag}) {
 
     useEffect(() => {
         const fetchPosts = async () => {
-            const response = await axios.get("/api/prompt", { headers: { 'Cache-Control': 'no-cache' } })
-            const allPosts = response.data.allPrompts
-            console.log("allPosts: ", allPosts)
-            setPosts(allPosts)
+            if(session) {
+                const response = await axios.get("/api/prompt", { headers: { 'Cache-Control': 'no-cache' } })
+                const allPosts = response.data.allPrompts
+                console.log("allPosts: ", allPosts)
+                setPosts(allPosts)
+            }   
         }
         fetchPosts()
     }, [session])
