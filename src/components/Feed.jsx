@@ -50,7 +50,7 @@ function Feed({tag}) {
 
         const searchPosts = () => {
             if(searchText && searchText !== "") {
-                let searchInput= searchText[0] == "#" ? searchText.slice(1).toLowerCase() : searchText.toLowerCase()
+                let searchInput= searchText[0] == "#" ? searchText.slice(1).toLowerCase().split(" ").join("") : searchText.toLowerCase().split(" ").join("")
                 const searchTagResults = posts.filter((item) => item.tags.map((item) => item[0] !== "#" ? `#${item.toLowerCase()}` : item.toLowerCase()).includes(`#${searchInput}`))
                 const searchUserResults = posts.filter((item) => item.creator.username.toLowerCase() === searchText.toLowerCase())
                 const searchEmailResults = posts.filter((item) => item.creator.email.toLowerCase() === searchText.toLowerCase())
