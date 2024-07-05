@@ -7,9 +7,9 @@ export async function GET() {
         
         await connectToDB()
 
-        const allPrompts = await Prompt.find({}).populate("creator")
+        const allPrompts = await Prompt.find().populate("creator")
 
-        return NextResponse.json({message: "All Prompts Fetched!", allPrompts}, {status: 200})
+        return NextResponse.json({message: "All Prompts Fetched!", allPrompts: allPrompts}, {status: 200})
 
     } catch (error) {
         return NextResponse.json({error: error.message}, {status: 500})

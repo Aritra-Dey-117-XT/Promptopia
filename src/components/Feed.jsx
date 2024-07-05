@@ -3,12 +3,10 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 import PromptCard from "./PromptCard"
-import { Image } from 'next/image';
-
 
 function Feed({tag}) {
 
-    const PromptCardList = ({ data, handleTagClick }) => {
+    const PromptCardList = ({ data }) => {
         return (
             <div className='mt-16 prompt_layout'>
                 {data.map((post) => (
@@ -83,7 +81,6 @@ function Feed({tag}) {
                         width="20" 
                         height="20" 
                         viewBox="0 0 24 24"
-                        // className="cursor-pointer"
                         className="absolute right-2 top-1/2 transform -translate-y-1/2 cursor-pointer"
                         onClick={() => setSearchText("")}
                     >
@@ -95,12 +92,10 @@ function Feed({tag}) {
             {searchText ? (
                 <PromptCardList
                     data={searchResultPosts}
-                    handleTagClick={() => {}}
                 />
             ) : (
                 <PromptCardList
                     data={posts}
-                    handleTagClick={() => {}}
                 />
             )} 
 
