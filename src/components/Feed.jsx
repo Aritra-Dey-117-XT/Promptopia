@@ -3,8 +3,11 @@
 import { useState, useEffect } from "react"
 import axios from "axios"
 import PromptCard from "./PromptCard"
+import { useSession } from "next-auth/react"
 
 function Feed({tag}) {
+
+    const { data: session} = useSession()
 
     const PromptCardList = ({ data }) => {
         return (
@@ -37,7 +40,7 @@ function Feed({tag}) {
             setPosts(allPosts)
         }
         fetchPosts()
-    }, [])
+    }, [session])
 
 
     useEffect(() => {
