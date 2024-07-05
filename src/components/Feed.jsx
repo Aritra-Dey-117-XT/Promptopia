@@ -33,8 +33,11 @@ function Feed({tag}) {
 
 
     useEffect(() => {
+        console.log("in useEffect")
         const fetchPosts = async () => {
+            console.log("in fetch posts")
             if(session) {
+                console.log("in session")
                 const response = await axios.get("/api/prompt", { headers: { 'Cache-Control': 'no-cache' } })
                 const allPosts = response.data.allPrompts
                 console.log("allPosts: ", allPosts)
@@ -42,6 +45,7 @@ function Feed({tag}) {
             }   
         }
         fetchPosts()
+        console.log(posts)
     }, [session])
 
 
