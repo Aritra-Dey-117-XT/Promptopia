@@ -2,7 +2,7 @@ import { connectToDB } from "@/utils/database";
 import Prompt from "@/models/prompt";
 import { NextResponse } from "next/server"
 
-export async function GET() {
+export async function GET(request) {
     try {
         
         await connectToDB()
