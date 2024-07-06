@@ -31,22 +31,15 @@ function Feed({tag}) {
         setSearchText(event.target.value)
     }
 
+    const fetchPosts = async () => {
+        const response = await axios.get("/api/prompt")
+        const allPosts = response.data.allPrompts
+        setPosts(allPosts)
+    }
 
     useEffect(() => {
-        console.log("in useEffect")
-        const fetchPosts = async () => {
-            console.log("in fetch posts")
-            if(session) {
-                console.log("in session")
-                const response = await axios.get("/api/prompt", { headers: { 'Cache-Control': 'no-cache' } })
-                const allPosts = response.data.allPrompts
-                console.log("allPosts: ", allPosts)
-                setPosts(allPosts)
-            }   
-        }
         fetchPosts()
-        console.log(posts)
-    }, [session])
+    }, [])
 
 
     useEffect(() => {
