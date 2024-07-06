@@ -11,7 +11,7 @@ export async function GET( request, {params} ) {
         await connectToDB()
 
         try {
-            const allPosts = await Prompt.find({ creator: userId }).populate("creator")
+            const allPosts = await Prompt.find({}).populate("creator")
             return NextResponse.json({message: "User Posts Fetched Successfully!", allPosts}, {status: 200})
         } catch (error) {
             return NextResponse.json({message: "No Users Found!"}, {status: 404})
